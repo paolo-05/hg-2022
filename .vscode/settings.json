@@ -1,0 +1,19 @@
+{
+  "files.associations": {
+    "*.py": "python",
+    "float.h": "c",
+    "*.tcc": "c",
+    "limits": "c",
+    "numeric": "c",
+    "streambuf": "c",
+    "tuple": "c",
+    "type_traits": "c",
+    "utility": "c",
+    "stdlib.h": "c",
+    "algorithm": "c",
+    "stdio.h": "c",
+    "string.h": "c",
+    "typeinfo": "c",
+    "limits.h": "c"
+  }
+}
