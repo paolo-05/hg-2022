@@ -6,46 +6,55 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <limits.h>
-
-struct ciao
+struct dato
 {
-    int data;
-    int carrier;
+    int a;
+    int volte;
 };
 
-typedef struct ciao SIG;
 int main()
 {
-    SIG sig[240323];
-
-    int dim = 0, a, b, i = 0, j = 0, fc = 0;
-
-    int max = INT_MIN, min = INT_MAX;
+    int a, b, i = 0, j = 0, fc = 0;
+    struct dato dato[240323];
+    struct dato max = dato[0];
     FILE *f = fopen("signal_ch1.txt", "r");
+    FILE *f1 = fopen("out.txt", "w");
+    FILE *f2 = fopen("out1.txt", "w");
     do
     {
         while (j < 20)
         {
-            fscanf(f, "%d %d", &a, &b);
-            if (b)
-            {
-                if (a > max)
-                    max = a;
-                if (a < min)
-                    min = a;
-                printf("\ndata=%d", a);
-                sig[i].data = a;
-                sig[i].carrier = b;
-                j++;
-            }
-        }
-        printf("\n\n");
-        j = 0;
-        i++;
-    } while (!feof(f));
+            if (fscanf(f, "%d %d", &a, &b) != EOF)
+                if (b)
+                {
+                    dato[i].a = a;
+                    dato[i].volte = 1;
 
-    printf("\ndim=%d\nmax=%d\nmin=%d\n", dim, max, min);
-    fclose(f);
+                    fprintf(f1, "%d ", a);
+                    j++;
+                    i++;
+                }
+                else
+                    0;
+            else
+                break;
+        }
+        fprintf(f1, "\n\n");
+        j = 0;
+
+    } while (!feof(f));
+    printf("\ndim=%d\n", i);
+    fclose(f), fclose(f1);
+    for (fc = 0; fc < 120415; fc++)
+        for (i = 0; i < 20; i++)
+            for (j = 0; j < 20; j++)
+                if (dato[i].a == dato[j].a)
+                    dato[i].volte++;
+    for (i = 0; i < 120415; i++)
+    {
+    }
+
+    fclose(f2);
+
     return 0;
 }
