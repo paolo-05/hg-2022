@@ -14,6 +14,7 @@
     "stdio.h": "c",
     "string.h": "c",
     "typeinfo": "c",
-    "limits.h": "c"
+    "limits.h": "c",
+    "stdint.h": "c"
   }
 }
